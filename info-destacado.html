@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Destacado - Medicos Libres</title>
+  <meta name="description" content="Destaca tu perfil de medico en el directorio. Aparece primero en busquedas, sello etico verificado y estadisticas. Desde 96 EUR/ano.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--azul-marino) 0%, var(--verde-etico-oscuro) 100%);
+      color: var(--blanco);
+      padding: 7rem 0 3rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.0625rem;
+    }
+
+    .badge-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      color: var(--blanco);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radio-full);
+      border: 1px solid rgba(255,255,255,0.3);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .benefit-card {
+      background: var(--blanco);
+      border-radius: var(--radio-lg);
+      box-shadow: var(--sombra-sm);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transicion);
+    }
+
+    .benefit-card:hover {
+      box-shadow: var(--sombra-md);
+      transform: translateY(-4px);
+    }
+
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+
+    .benefit-icon.green {
+      background: rgba(46,204,113,0.1);
+      color: var(--verde-etico);
+    }
+
+    .benefit-icon.blue {
+      background: rgba(26,42,106,0.1);
+      color: var(--azul-marino);
+    }
+
+    .benefit-icon.orange {
+      background: rgba(243,156,18,0.1);
+      color: var(--naranja-aviso);
+    }
+
+    .benefit-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--azul-marino);
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.9375rem;
+      color: var(--gris-600);
+      line-height: 1.6;
+    }
+
+    /* Pricing highlight */
+    .pricing-highlight {
+      background: var(--azul-marino);
+      color: var(--blanco);
+      border-radius: var(--radio-xl);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 500px;
+      margin: 3rem auto 0;
+      box-shadow: var(--sombra-xl);
+    }
+
+    .pricing-highlight .price {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--verde-etico);
+      line-height: 1;
+    }
+
+    .pricing-highlight .price span {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .pricing-highlight ul {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+      text-align: left;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pricing-highlight li {
+      padding: 0.625rem 0;
+      font-size: 0.9375rem;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+
+    .comparison-table th {
+      background: var(--azul-marino);
+      color: var(--blanco);
+      font-weight: 600;
+    }
+
+    .comparison-table th:first-child {
+      border-radius: var(--radio-md) 0 0 0;
+    }
+
+    .comparison-table th:last-child {
+      border-radius: 0 var(--radio-md) 0 0;
+    }
+
+    .comparison-table td {
+      border-bottom: 1px solid var(--gris-200);
+      color: var(--gris-700);
+    }
+
+    .comparison-table tr:nth-child(even) td {
+      background: var(--gris-50);
+    }
+
+    .comparison-table .check {
+      color: var(--verde-etico);
+    }
+
+    .comparison-table .cross {
+      color: var(--gris-400);
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table {
+        font-size: 0.875rem;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.75rem 0.625rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader-spinner"></div>
+    <p style="margin-top:1rem;color:var(--gris-600);font-size:0.875rem;">Cargando...</p>
+  </div>
+
+  <!-- Navegacion -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        Medicos Libres
+      </a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="directorio-pacientes.html">Buscar medico</a></li>
+        <li><a href="registro-medico.html">Soy medico</a></li>
+        <li><a href="info-empresas.html">Para clinicas</a></li>
+        <li><a href="info-destacado.html">Destacarme</a></li>
+        <li><a href="donar.html" class="nav-cta">Donar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+    <div class="container">
+      <div class="badge-hero">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Mayor visibilidad, mas pacientes
+      </div>
+      <h1>Perfil Destacado</h1>
+      <p>Destaca sobre el resto. Aparece primero, transmite confianza, recibe mas contactos.</p>
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Beneficios del perfil destacado</h2>
+        <p>Todo lo que incluye tu upgrade a perfil destacado en Medicos Libres.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+          </div>
+          <h3>Aparece primero</h3>
+          <p>Tu perfil se mostrara en las primeras posiciones de los resultados de busqueda, independientemente del orden cronologico.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Sello "Etico Verificado"</h3>
+          <p>Un distintivo visual que transmite confianza a los pacientes. Demuestra que tu compromiso etico ha sido verificado.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Estadisticas de visitas</h3>
+          <p>Accede a un panel con el numero de visualizaciones de tu perfil, clicks en contacto y evolucion mensual.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Insignia informativa</h3>
+          <p>Informacion ampliada visible directamente en el listado: precio, anos de experiencia, idiomas, etc.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>En la home</h3>
+          <p>Los perfiles destacados rotan en la seccion "Medicos destacados del mes" de la pagina principal.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Soporte prioritario</h3>
+          <p>Atencion preferente para cualquier consulta, modificacion de perfil o incidencia que puedas tener.</p>
+        </div>
+      </div>
+
+      <!-- Precio -->
+      <div class="pricing-highlight fade-in">
+        <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: rgba(255,255,255,0.9);">Inversion anual</h3>
+        <div class="price">96<span> EUR/ano</span></div>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.9375rem; margin: 0.75rem 0 1.5rem;">Menos de 8 EUR al mes. Un solo paciente nuevo lo amortiza.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Posicionamiento prioritario</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sello Etico Verificado</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Estadisticas mensuales</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Visible en home</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Cancelacion en cualquier momento</li>
+        </ul>
+        <button class="btn btn-primary btn-lg btn-full" onclick="UI.toast('Funcionalidad en desarrollo. Contactanos en hola@medicoslibres.es para solicitar el upgrade.', 'info')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Solicitar upgrade
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparativa -->
+  <section class="section section-alt">
+    <div class="container" style="max-width: 700px;">
+      <div class="section-header fade-in">
+        <h2>Comparativa de planes</h2>
+        <p>Elige la opcion que mejor se adapte a tu situacion profesional.</p>
+      </div>
+      <div style="overflow-x: auto;">
+        <table class="comparison-table fade-in">
+          <thead>
+            <tr>
+              <th>Caracteristica</th>
+              <th style="text-align:center;">Gratuito</th>
+              <th style="text-align:center;">Destacado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Perfil en directorio</td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Contacto directo con pacientes</td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Verificacion de colegiado</td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Posicion en busquedas</td>
+              <td style="text-align:center;"><span class="cross">-</span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Sello "Etico Verificado"</td>
+              <td style="text-align:center;"><span class="cross">-</span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Estadisticas de visitas</td>
+              <td style="text-align:center;"><span class="cross">-</span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Visible en pagina principal</td>
+              <td style="text-align:center;"><span class="cross">-</span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Soporte prioritario</td>
+              <td style="text-align:center;"><span class="cross">-</span></td>
+              <td style="text-align:center;"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            Medicos Libres
+          </a>
+          <p>Directorio profesional de medicos espanoles comprometidos con la etica, la autonomia y la libertad de ejercicio medico.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Plataforma</h4>
+          <ul>
+            <li><a href="directorio-pacientes.html">Buscar medico</a></li>
+            <li><a href="registro-medico.html">Registro medico</a></li>
+            <li><a href="info-destacado.html">Perfil destacado</a></li>
+            <li><a href="info-empresas.html">Para clinicas</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="legal.html">Aviso Legal</a></li>
+            <li><a href="legal.html#privacidad">Politica de Privacidad</a></li>
+            <li><a href="legal.html#cookies">Politica de Cookies</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Soporte</h4>
+          <ul>
+            <li><a href="donar.html">Donar al proyecto</a></li>
+            <li><a href="mailto:hola@medicoslibres.es">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p> Medicos Libres 2026. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
